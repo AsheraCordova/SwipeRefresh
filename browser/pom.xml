@@ -65,4 +65,43 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+	
+	
+	<distributionManagement>
+		<repository>
+			<id>internal.repo</id>
+			<name>Github Repo</name>
+			<url>file:///D:/Java/github_ashera/mvn-ashera-web-repo</url>
+		</repository>
+	</distributionManagement>
+
+
+	<repositories>
+		<repository>
+			<id>ashera-github-web-repo</id>
+			<url>https://raw.githubusercontent.com/AsheraCordova/mvn-ashera-web-repo/master/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>ashera-github-java-repo</id>
+			<url>https://raw.githubusercontent.com/AsheraCordova/mvn-ashera-java-repo/master/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+
+	</repositories>
 </project>
