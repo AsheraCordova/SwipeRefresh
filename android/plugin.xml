@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.ashera.swiperefreshlayout"
+        version="1.0">
+
+  <name>CordovaSwipeRefreshLayoutPlugin</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+  
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="CordovaSwipeRefreshLayoutPlugin">
+        <param name="android-package" value="com.ashera.swiperefreshlayout.CordovaSwipeRefreshLayoutPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+   	 <!-- start src -->
+     <source-file src="src/com/ashera/swiperefreshlayout/CordovaSwipeRefreshLayoutPlugin.java" target-dir="src/com/ashera/swiperefreshlayout"/>
+     <source-file src="src/com/ashera/swiperefreshlayout/CustomSwipeRefreshLayoutImpl.java" target-dir="src/com/ashera/swiperefreshlayout"/>
+     <source-file src="src/com/ashera/swiperefreshlayout/SwipeRefreshLayoutPlugin.java" target-dir="src/com/ashera/swiperefreshlayout"/>
+     <source-file src="src/com/reginald/swiperefresh/CustomSwipeProgressBar.java" target-dir="src/com/reginald/swiperefresh"/>
+     <source-file src="src/com/reginald/swiperefresh/CustomSwipeRefreshLayout.java" target-dir="src/com/reginald/swiperefresh"/>
+     <source-file src="src/com/reginald/swiperefresh/DefaultCustomHeadView.java" target-dir="src/com/reginald/swiperefresh"/>
+     <!-- src end -->
+     <!-- start res -->
+     <source-file src="res/drawable-xxxhdpi/pulltorefresh.png" target-dir="res/drawable-xxxhdpi"/>
+     <source-file src="res/layout/default_swiperefresh_head_layout.xml" target-dir="res/layout"/>
+     <source-file src="res/values/srl_attrs.xml" target-dir="res/values"/>
+     <source-file src="res/values/srl_strings.xml" target-dir="res/values"/>
+     <!-- res end -->
+     <!-- start tsc -->
+     <source-file src="tsc/src/android/widget/CustomSwipeRefreshLayoutImpl.ts" target-dir="tsc/src/android/widget"/>
+     <!-- tsc end -->
+  </platform>
+
+
+</plugin>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.ashera.swiperefreshlayout"
+        version="1.0">
+
+  <name>CordovaSwipeRefreshLayoutPlugin</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+  
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="CordovaSwipeRefreshLayoutPlugin">
+        <param name="android-package" value="com.ashera.swiperefreshlayout.CordovaSwipeRefreshLayoutPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+   	 <!-- start src -->
+     <source-file src="android/src/com/ashera/swiperefreshlayout/CordovaSwipeRefreshLayoutPlugin.java" target-dir="src/com/ashera/swiperefreshlayout"/>
+     <source-file src="android/src/com/ashera/swiperefreshlayout/CustomSwipeRefreshLayoutImpl.java" target-dir="src/com/ashera/swiperefreshlayout"/>
+     <source-file src="android/src/com/ashera/swiperefreshlayout/SwipeRefreshLayoutPlugin.java" target-dir="src/com/ashera/swiperefreshlayout"/>
+     <source-file src="android/src/com/reginald/swiperefresh/CustomSwipeProgressBar.java" target-dir="src/com/reginald/swiperefresh"/>
+     <source-file src="android/src/com/reginald/swiperefresh/CustomSwipeRefreshLayout.java" target-dir="src/com/reginald/swiperefresh"/>
+     <source-file src="android/src/com/reginald/swiperefresh/DefaultCustomHeadView.java" target-dir="src/com/reginald/swiperefresh"/>
+     <!-- src end -->
+     <!-- start res -->
+     <source-file src="android/res/drawable-xxxhdpi/pulltorefresh.png" target-dir="res/drawable-xxxhdpi"/>
+     <source-file src="android/res/layout/default_swiperefresh_head_layout.xml" target-dir="res/layout"/>
+     <source-file src="android/res/values/srl_attrs.xml" target-dir="res/values"/>
+     <source-file src="android/res/values/srl_strings.xml" target-dir="res/values"/>
+     <!-- res end -->
+     <!-- start tsc -->
+     <source-file src="android/tsc/src/android/widget/CustomSwipeRefreshLayoutImpl.ts" target-dir="tsc/src/android/widget"/>
+     <!-- tsc end -->
+  </platform>
+  <platform name="ios">
+    <config-file target="config.xml" parent="/widget">
+      <feature name="CordovaSwipeRefreshLayoutPlugin">
+        	<param name="ios-package" value="CordovaSwipeRefreshLayoutPlugin" />
+         	<param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+   	 <!-- start ios -->
+     <header-file src="ios/ios/src/CordovaSwipeRefreshLayoutPlugin.h" target-dir="SwipeRefreshLayout/ios/src"/>
+     <source-file src="ios/ios/src/CordovaSwipeRefreshLayoutPlugin.m" target-dir="SwipeRefreshLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/CustomSwipeProgressBar.h" target-dir="SwipeRefreshLayout/ios/src"/>
+     <source-file src="ios/ios/src/CustomSwipeProgressBar.m" target-dir="SwipeRefreshLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/CustomSwipeRefreshLayout.h" target-dir="SwipeRefreshLayout/ios/src"/>
+     <source-file src="ios/ios/src/CustomSwipeRefreshLayout.m" target-dir="SwipeRefreshLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/CustomSwipeRefreshLayoutImpl.h" target-dir="SwipeRefreshLayout/ios/src"/>
+     <source-file src="ios/ios/src/CustomSwipeRefreshLayoutImpl.m" target-dir="SwipeRefreshLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/DefaultCustomHeadView.h" target-dir="SwipeRefreshLayout/ios/src"/>
+     <source-file src="ios/ios/src/DefaultCustomHeadView.m" target-dir="SwipeRefreshLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/DefaultCustomHeadViewImpl.h" target-dir="SwipeRefreshLayout/ios/src"/>
+     <source-file src="ios/ios/src/DefaultCustomHeadViewImpl.m" target-dir="SwipeRefreshLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/LineSwipeProgressBar.h" target-dir="SwipeRefreshLayout/ios/src"/>
+     <source-file src="ios/ios/src/LineSwipeProgressBar.m" target-dir="SwipeRefreshLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/SwipeRefreshLayoutPlugin.h" target-dir="SwipeRefreshLayout/ios/src"/>
+     <source-file src="ios/ios/src/SwipeRefreshLayoutPlugin.m" target-dir="SwipeRefreshLayout/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <!-- ios end -->
+     <!-- start tsc -->
+     <source-file src="ios/tsc/src/ios/widget/CustomSwipeRefreshLayoutImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <source-file src="ios/tsc/src/ios/widget/DefaultCustomHeadViewImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <!-- tsc end -->
+  </platform>
+  <platform name="browser">
+    <config-file target="config.xml" parent="/*">
+      <feature name="CordovaSwipeRefreshLayoutPlugin">
+        <param name="android-package" value="com.ashera.swiperefreshlayout.CordovaSwipeRefreshLayoutPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+	<framework src="browser/core.gradle" custom="true" type="gradleReference" />
+   	 <!-- start src -->
+     <!-- src end -->
+     <!-- start res -->
+     <!-- res end -->
+     <!-- start tsc -->
+     <source-file src="browser/tsc/src/web/widget/CustomSwipeRefreshLayoutImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/DefaultCustomHeadViewImpl.ts" target-dir="tsc/src/web/widget"/>
+     <!-- tsc end -->
+  </platform>
+  <platform name="swt">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="CordovaSwipeRefreshLayoutPlugin">
+        <param name="android-package" value="com.ashera.swiperefreshlayout.CordovaSwipeRefreshLayoutPlugin"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+	<framework src="swt/core.gradle" custom="true" type="gradleReference" />
+   	 <!-- start src -->
+     <!-- src end -->
+     <!-- start res -->
+     <!-- res end -->
+     <!-- start tsc -->
+     <source-file src="swt/tsc/src/swt/widget/CustomSwipeRefreshLayoutImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/DefaultCustomHeadViewImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <!-- tsc end -->
+  </platform>
+
+
+
+
+
+</plugin>
