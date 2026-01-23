@@ -247,6 +247,8 @@ NSString *ASCustomSwipeRefreshLayoutImpl_GROUP_NAME = @"com.reginald.swiperefres
   ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"enableHorizontalScroll"])) withTypeWithNSString:@"boolean"]);
   ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"enable_top_progress_bar"])) withTypeWithNSString:@"boolean"]);
   ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"keep_refresh_head"])) withTypeWithNSString:@"boolean"]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"time_out_return_to_top"])) withTypeWithNSString:@"int"]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"time_out_refresh_complete"])) withTypeWithNSString:@"int"]);
   ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"return_to_top_duration"])) withTypeWithNSString:@"int"]);
   ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"return_to_header_duration"])) withTypeWithNSString:@"int"]);
   ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"resistanceFactor"])) withTypeWithNSString:@"float"]);
@@ -386,7 +388,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                 withASILifeCycleDecorator:(id<ASILifeCycleDecorator>)decorator {
   ASViewGroupImpl_setAttributeWithASIWidget_withASWidgetAttribute_withNSString_withId_withASILifeCycleDecorator_(self, key, strValue, objValue, decorator);
   id nativeWidget = [self asNativeWidget];
-  switch (JreIndexOfStr([((ASWidgetAttribute *) nil_chk(key)) getAttributeName], (id[]){ @"customHeadLayout", @"refresh_mode", @"onRefresh", @"enableHorizontalScroll", @"enable_top_progress_bar", @"keep_refresh_head", @"return_to_top_duration", @"return_to_header_duration", @"resistanceFactor", @"progressBarHeight", @"triggerDistance", @"top_progress_bar_color_scheme" }, 12)) {
+  switch (JreIndexOfStr([((ASWidgetAttribute *) nil_chk(key)) getAttributeName], (id[]){ @"customHeadLayout", @"refresh_mode", @"onRefresh", @"enableHorizontalScroll", @"enable_top_progress_bar", @"keep_refresh_head", @"time_out_return_to_top", @"time_out_refresh_complete", @"return_to_top_duration", @"return_to_header_duration", @"resistanceFactor", @"progressBarHeight", @"triggerDistance", @"top_progress_bar_color_scheme" }, 14)) {
     case 0:
     {
       ASCustomSwipeRefreshLayoutImpl_setCustomHeadLayoutWithId_(self, objValue);
@@ -419,30 +421,40 @@ J2OBJC_IGNORE_DESIGNATED_END
     break;
     case 6:
     {
-      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setReturnToTopDurationWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]))) intValue]];
+      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setReturnToOriginalTimeoutWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]))) intValue]];
     }
     break;
     case 7:
     {
-      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setReturnToHeaderDurationWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]))) intValue]];
+      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setRefreshCompleteTimeoutWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]))) intValue]];
     }
     break;
     case 8:
     {
-      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setResistanceFactorWithFloat:[((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk(objValue, [JavaLangFloat class]))) floatValue]];
+      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setReturnToTopDurationWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]))) intValue]];
     }
     break;
     case 9:
     {
-      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setProgressBarHeightWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]))) intValue]];
+      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setReturnToHeaderDurationWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]))) intValue]];
     }
     break;
     case 10:
     {
-      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setTriggerDistanceWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]))) intValue]];
+      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setResistanceFactorWithFloat:[((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk(objValue, [JavaLangFloat class]))) floatValue]];
     }
     break;
     case 11:
+    {
+      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setProgressBarHeightWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]))) intValue]];
+    }
+    break;
+    case 12:
+    {
+      [((ASCustomSwipeRefreshLayout *) nil_chk(customSwipeRefreshLayout_)) setTriggerDistanceWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]))) intValue]];
+    }
+    break;
+    case 13:
     {
       ASCustomSwipeRefreshLayoutImpl_setTopProgressBarColorSchemeWithId_(self, objValue);
     }

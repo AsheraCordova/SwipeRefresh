@@ -94,6 +94,7 @@
   ADAnimation *mAnimateToStartPosition_;
   ADAnimation *mAnimateToTrigerPosition_;
   NSString *customHeaderLayout_;
+  JavaLangInteger *webHeaderZIndex_;
 }
 
 - (void)animateStayCompleteWithADAnimation_AnimationListener:(id<ADAnimation_AnimationListener>)listener;
@@ -143,6 +144,8 @@
 - (void)postDelayedWithJavaLangRunnable:(id<JavaLangRunnable>)runnable
                                 withInt:(int32_t)delay;
 
+- (void)updateZIndex;
+
 @end
 
 J2OBJC_FIELD_SETTER(ASCustomSwipeRefreshLayout, mDecelerateInterpolator_, ADDecelerateInterpolator *)
@@ -167,6 +170,7 @@ J2OBJC_FIELD_SETTER(ASCustomSwipeRefreshLayout, mCancel_, id<JavaLangRunnable>)
 J2OBJC_FIELD_SETTER(ASCustomSwipeRefreshLayout, mAnimateToStartPosition_, ADAnimation *)
 J2OBJC_FIELD_SETTER(ASCustomSwipeRefreshLayout, mAnimateToTrigerPosition_, ADAnimation *)
 J2OBJC_FIELD_SETTER(ASCustomSwipeRefreshLayout, customHeaderLayout_, NSString *)
+J2OBJC_FIELD_SETTER(ASCustomSwipeRefreshLayout, webHeaderZIndex_, JavaLangInteger *)
 
 inline int32_t ASCustomSwipeRefreshLayout_get_RETURN_TO_ORIGINAL_POSITION_TIMEOUT(void);
 #define ASCustomSwipeRefreshLayout_RETURN_TO_ORIGINAL_POSITION_TIMEOUT -1
@@ -243,6 +247,8 @@ __attribute__((unused)) static void ASCustomSwipeRefreshLayout_setTargetOffsetTo
 __attribute__((unused)) static void ASCustomSwipeRefreshLayout_updatePositionTimeoutWithBoolean_(ASCustomSwipeRefreshLayout *self, bool isDelayed);
 
 __attribute__((unused)) static void ASCustomSwipeRefreshLayout_postDelayedWithJavaLangRunnable_withInt_(ASCustomSwipeRefreshLayout *self, id<JavaLangRunnable> runnable, int32_t delay);
+
+__attribute__((unused)) static void ASCustomSwipeRefreshLayout_updateZIndex(ASCustomSwipeRefreshLayout *self);
 
 @interface ASCustomSwipeRefreshLayout_1 : ADAnimation
 
@@ -703,6 +709,7 @@ NSString *ASCustomSwipeRefreshLayout_TAG = @"csrl";
     ASDefaultCustomHeadView *headView = (ASDefaultCustomHeadView *) cast_chk([((id<ASIWidget>) nil_chk(w)) asWidget], [ASDefaultCustomHeadView class]);
     [((ASDefaultCustomHeadView *) nil_chk(headView)) setupLayoutWithNSString:customHeaderLayout_];
     [self setCustomHeadviewWithADView:headView];
+    ASCustomSwipeRefreshLayout_updateZIndex(self);
   }
   if ([self getChildCount] > 2 && ![self isInEditMode]) {
     @throw new_JavaLangIllegalStateException_initWithNSString_(@"CustomSwipeRefreshLayout can host one child content view.");
@@ -1037,6 +1044,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   self->customHeaderLayout_ = layout;
 }
 
+- (void)setWebHeaderZIndexWithId:(id)objValue {
+  self->webHeaderZIndex_ = (JavaLangInteger *) cast_chk(objValue, [JavaLangInteger class]);
+  ASCustomSwipeRefreshLayout_updateZIndex(self);
+}
+
+- (void)updateZIndex {
+  ASCustomSwipeRefreshLayout_updateZIndex(self);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, "V", 0x2, 0, 1, -1, -1, -1, -1 },
@@ -1098,6 +1114,8 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 57, 58, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 59, 60, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 61, 62, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -1161,10 +1179,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[56].selector = @selector(init);
   methods[57].selector = @selector(setProgressBarColorWithId:withId:withId:withId:);
   methods[58].selector = @selector(setCustomHeaderLayoutWithNSString:);
+  methods[59].selector = @selector(setWebHeaderZIndexWithId:);
+  methods[60].selector = @selector(updateZIndex);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "DEBUG", "Z", .constantValue.asBOOL = ASCustomSwipeRefreshLayout_DEBUG, 0x19, -1, -1, -1, -1 },
-    { "TAG", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 61, -1, -1 },
+    { "TAG", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 63, -1, -1 },
     { "REFRESH_MODE_SWIPE", "I", .constantValue.asInt = ASCustomSwipeRefreshLayout_REFRESH_MODE_SWIPE, 0x19, -1, -1, -1, -1 },
     { "REFRESH_MODE_PULL", "I", .constantValue.asInt = ASCustomSwipeRefreshLayout_REFRESH_MODE_PULL, 0x19, -1, -1, -1, -1 },
     { "RETURN_TO_ORIGINAL_POSITION_TIMEOUT", "I", .constantValue.asInt = ASCustomSwipeRefreshLayout_RETURN_TO_ORIGINAL_POSITION_TIMEOUT, 0x1a, -1, -1, -1, -1 },
@@ -1206,7 +1226,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "mDownEvent_", "LADMotionEvent;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mFrom_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mRefreshing_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "mTouchSlop_CustomSwipeRefreshLayout_", "I", .constantValue.asLong = 0, 0x2, 62, -1, -1, -1 },
+    { "mTouchSlop_CustomSwipeRefreshLayout_", "I", .constantValue.asLong = 0, 0x2, 64, -1, -1, -1 },
     { "mDistanceToTriggerSync_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mPrevY_", "F", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mFromPercentage_", "F", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
@@ -1229,9 +1249,10 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "mAnimateToStartPosition_", "LADAnimation;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
     { "mAnimateToTrigerPosition_", "LADAnimation;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
     { "customHeaderLayout_", "LNSString;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "webHeaderZIndex_", "LJavaLangInteger;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "animateStayComplete", "LADAnimation_AnimationListener;", "animateOffsetToTrigerPosition", "ILADAnimation_AnimationListener;", "animateOffsetToStartPosition", "canViewScrollUp", "LADView;LADMotionEvent;", "canChildrenScroolUp", "canViewScrollHorizontally", "LADView;LADMotionEvent;I", "canChildrenScroolHorizontally", "setCustomHeadview", "LADView;", "setRefreshMode", "I", "setOnRefreshListener", "LASCustomSwipeRefreshLayout_OnRefreshListener;", "setTriggerPercentage", "F", "setRefreshState", "updateHeadViewState", "Z", "setRefreshing", "onLayout", "ZIIII", "onMeasure", "II", "checkLayoutParams", "LADViewGroup_LayoutParams;", "addView", "LADView;ILASCustomSwipeRefreshLayout_LayoutParams;", "onInterceptTouchEvent", "LADMotionEvent;", "requestDisallowInterceptTouchEvent", "onTouchEvent", "updateContentOffsetTop", "IZ", "setTargetOffsetTop", "updatePositionTimeout", "setEnableHorizontalScroll", "enableTopProgressBar", "setKeepTopRefreshingHead", "setReturnToOriginalTimeout", "setRefreshCompleteTimeout", "setReturnToTopDuration", "setReturnToHeaderDuration", "setRefreshCheckHandler", "LASCustomSwipeRefreshLayout_RefreshCheckHandler;", "setScroolUpHandler", "LASCustomSwipeRefreshLayout_ScrollUpHandler;", "setScroolLeftOrRightHandler", "LASCustomSwipeRefreshLayout_ScrollLeftOrRightHandler;", "setResistanceFactor", "setProgressBarHeight", "setTriggerDistance", "postDelayed", "LJavaLangRunnable;I", "setProgressBarColor", "LNSObject;LNSObject;LNSObject;LNSObject;", "setCustomHeaderLayout", "LNSString;", &ASCustomSwipeRefreshLayout_TAG, "mTouchSlop", "LASCustomSwipeRefreshLayout_OnRefreshListener;LASCustomSwipeRefreshLayout_RefreshCheckHandler;LASCustomSwipeRefreshLayout_ScrollUpHandler;LASCustomSwipeRefreshLayout_ScrollLeftOrRightHandler;LASCustomSwipeRefreshLayout_CustomSwipeRefreshHeadLayout;LASCustomSwipeRefreshLayout_State;LASCustomSwipeRefreshLayout_BaseAnimationListener;LASCustomSwipeRefreshLayout_LayoutParams;" };
-  static const J2ObjcClassInfo _ASCustomSwipeRefreshLayout = { "CustomSwipeRefreshLayout", "com.reginald.swiperefresh", ptrTable, methods, fields, 7, 0x1, 59, 66, -1, 63, -1, -1, -1 };
+  static const void *ptrTable[] = { "animateStayComplete", "LADAnimation_AnimationListener;", "animateOffsetToTrigerPosition", "ILADAnimation_AnimationListener;", "animateOffsetToStartPosition", "canViewScrollUp", "LADView;LADMotionEvent;", "canChildrenScroolUp", "canViewScrollHorizontally", "LADView;LADMotionEvent;I", "canChildrenScroolHorizontally", "setCustomHeadview", "LADView;", "setRefreshMode", "I", "setOnRefreshListener", "LASCustomSwipeRefreshLayout_OnRefreshListener;", "setTriggerPercentage", "F", "setRefreshState", "updateHeadViewState", "Z", "setRefreshing", "onLayout", "ZIIII", "onMeasure", "II", "checkLayoutParams", "LADViewGroup_LayoutParams;", "addView", "LADView;ILASCustomSwipeRefreshLayout_LayoutParams;", "onInterceptTouchEvent", "LADMotionEvent;", "requestDisallowInterceptTouchEvent", "onTouchEvent", "updateContentOffsetTop", "IZ", "setTargetOffsetTop", "updatePositionTimeout", "setEnableHorizontalScroll", "enableTopProgressBar", "setKeepTopRefreshingHead", "setReturnToOriginalTimeout", "setRefreshCompleteTimeout", "setReturnToTopDuration", "setReturnToHeaderDuration", "setRefreshCheckHandler", "LASCustomSwipeRefreshLayout_RefreshCheckHandler;", "setScroolUpHandler", "LASCustomSwipeRefreshLayout_ScrollUpHandler;", "setScroolLeftOrRightHandler", "LASCustomSwipeRefreshLayout_ScrollLeftOrRightHandler;", "setResistanceFactor", "setProgressBarHeight", "setTriggerDistance", "postDelayed", "LJavaLangRunnable;I", "setProgressBarColor", "LNSObject;LNSObject;LNSObject;LNSObject;", "setCustomHeaderLayout", "LNSString;", "setWebHeaderZIndex", "LNSObject;", &ASCustomSwipeRefreshLayout_TAG, "mTouchSlop", "LASCustomSwipeRefreshLayout_OnRefreshListener;LASCustomSwipeRefreshLayout_RefreshCheckHandler;LASCustomSwipeRefreshLayout_ScrollUpHandler;LASCustomSwipeRefreshLayout_ScrollLeftOrRightHandler;LASCustomSwipeRefreshLayout_CustomSwipeRefreshHeadLayout;LASCustomSwipeRefreshLayout_State;LASCustomSwipeRefreshLayout_BaseAnimationListener;LASCustomSwipeRefreshLayout_LayoutParams;" };
+  static const J2ObjcClassInfo _ASCustomSwipeRefreshLayout = { "CustomSwipeRefreshLayout", "com.reginald.swiperefresh", ptrTable, methods, fields, 7, 0x1, 61, 67, -1, 65, -1, -1, -1 };
   return &_ASCustomSwipeRefreshLayout;
 }
 
@@ -1471,6 +1492,12 @@ ASCustomSwipeRefreshLayout *new_ASCustomSwipeRefreshLayout_init() {
 
 ASCustomSwipeRefreshLayout *create_ASCustomSwipeRefreshLayout_init() {
   J2OBJC_CREATE_IMPL(ASCustomSwipeRefreshLayout, init)
+}
+
+void ASCustomSwipeRefreshLayout_updateZIndex(ASCustomSwipeRefreshLayout *self) {
+  if (self->webHeaderZIndex_ != nil && self->mHeadview_ != nil) {
+    [self->mHeadview_ setMyAttributeWithNSString:@"zIndex" withId:self->webHeaderZIndex_];
+  }
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCustomSwipeRefreshLayout)

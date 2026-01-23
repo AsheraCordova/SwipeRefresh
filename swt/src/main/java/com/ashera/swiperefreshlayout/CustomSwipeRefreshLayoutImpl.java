@@ -78,6 +78,8 @@ public class CustomSwipeRefreshLayoutImpl extends BaseHasWidgets {
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("enableHorizontalScroll").withType("boolean"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("enable_top_progress_bar").withType("boolean"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("keep_refresh_head").withType("boolean"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("time_out_return_to_top").withType("int"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("time_out_refresh_complete").withType("int"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("return_to_top_duration").withType("int"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("return_to_header_duration").withType("int"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("resistanceFactor").withType("float"));
@@ -542,6 +544,24 @@ public class CustomSwipeRefreshLayoutImpl extends BaseHasWidgets {
 
 
 	customSwipeRefreshLayout.setKeepTopRefreshingHead((boolean)objValue);
+
+
+
+			}
+			break;
+			case "time_out_return_to_top": {
+
+
+	customSwipeRefreshLayout.setReturnToOriginalTimeout((int)objValue);
+
+
+
+			}
+			break;
+			case "time_out_refresh_complete": {
+
+
+	customSwipeRefreshLayout.setRefreshCompleteTimeout((int)objValue);
 
 
 

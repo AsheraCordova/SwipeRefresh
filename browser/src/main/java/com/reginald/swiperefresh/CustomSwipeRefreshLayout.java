@@ -437,7 +437,7 @@ if (DEBUG) Log.d(TAG,String.format("@@ onLayout() %d : content [%d,%d,%d,%d] ",g
 protected void onMeasure(int widthMeasureSpec,int heightMeasureSpec){
 super.onMeasure(widthMeasureSpec,heightMeasureSpec);
 if (!hasHeadview) {
-com.ashera.widget.IWidget w = com.ashera.widget.WidgetFactory.createWidget(DefaultCustomHeadView.class.getName(), "", (com.ashera.widget.HasWidgets) this.getOuterWidget(), false);DefaultCustomHeadView headView = (DefaultCustomHeadView)w.asWidget();headView.setupLayout(customHeaderLayout);setCustomHeadview(/*new DefaultCustomHeadView(this)*/headView);
+com.ashera.widget.IWidget w = com.ashera.widget.WidgetFactory.createWidget(DefaultCustomHeadView.class.getName(), "", (com.ashera.widget.HasWidgets) this.getOuterWidget(), false);DefaultCustomHeadView headView = (DefaultCustomHeadView)w.asWidget();headView.setupLayout(customHeaderLayout);setCustomHeadview(/*new DefaultCustomHeadView(this)*/headView);updateZIndex();
 }
 if (getChildCount() > 2 && !isInEditMode()) {
 throw new IllegalStateException("CustomSwipeRefreshLayout can host one child content view.");
@@ -828,5 +828,15 @@ mTopProgressBar.setProgressBarColor(color1,color2,color3,color4);
 private String customHeaderLayout;
 public void setCustomHeaderLayout(String layout){
 this.customHeaderLayout=layout;
+}
+private Integer webHeaderZIndex;
+public void setWebHeaderZIndex(Object objValue){
+this.webHeaderZIndex=(Integer)objValue;
+updateZIndex();
+}
+private void updateZIndex(){
+if (webHeaderZIndex != null && mHeadview != null) {
+mHeadview.setMyAttribute("zIndex",webHeaderZIndex);
+}
 }
 }

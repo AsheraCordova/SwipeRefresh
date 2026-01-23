@@ -78,12 +78,15 @@ public class CustomSwipeRefreshLayoutImpl extends BaseHasWidgets {
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("enableHorizontalScroll").withType("boolean"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("enable_top_progress_bar").withType("boolean"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("keep_refresh_head").withType("boolean"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("time_out_return_to_top").withType("int"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("time_out_refresh_complete").withType("int"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("return_to_top_duration").withType("int"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("return_to_header_duration").withType("int"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("resistanceFactor").withType("float"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("progressBarHeight").withType("dimension"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("triggerDistance").withType("int"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("top_progress_bar_color_scheme").withType("resourcestring"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("webHeaderZIndex").withType("int"));
 	
 	}
 	
@@ -543,6 +546,24 @@ public class CustomSwipeRefreshLayoutImpl extends BaseHasWidgets {
 
 			}
 			break;
+			case "time_out_return_to_top": {
+
+
+	customSwipeRefreshLayout.setReturnToOriginalTimeout((int)objValue);
+
+
+
+			}
+			break;
+			case "time_out_refresh_complete": {
+
+
+	customSwipeRefreshLayout.setRefreshCompleteTimeout((int)objValue);
+
+
+
+			}
+			break;
 			case "return_to_top_duration": {
 
 
@@ -592,6 +613,15 @@ public class CustomSwipeRefreshLayoutImpl extends BaseHasWidgets {
 
 
 		setTopProgressBarColorScheme(objValue);
+
+
+
+			}
+			break;
+			case "webHeaderZIndex": {
+
+
+		setWebHeaderZIndex(objValue);
 
 
 
@@ -807,5 +837,8 @@ public java.util.Map<String, Object> getOnRefreshEventObj( ) {
     private void addDellocHandler(String id) {
     	fragment.getEventBus().on(DELLOC_EVENT, new DallocHandler(DELLOC_EVENT, id));
     }
-    
+
+	private void setWebHeaderZIndex(Object objValue) {
+		customSwipeRefreshLayout.setWebHeaderZIndex((int) objValue);
+	}
 }

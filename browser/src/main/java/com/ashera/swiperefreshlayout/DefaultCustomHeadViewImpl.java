@@ -802,7 +802,6 @@ return getDividerPadding();			}
     @Override
     public void initialized() {
     	super.initialized();
-    	htmlElement.getStyle().setProperty("z-index", "-1000");
     	htmlElement.getStyle().setProperty("overflow", "hidden");
     }
 }

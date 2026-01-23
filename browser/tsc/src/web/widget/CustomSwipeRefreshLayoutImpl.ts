@@ -29,6 +29,9 @@ import { Mixin, decorate } from 'ts-mixer';
 
 
 
+
+
+
 import {ViewGroupImpl_LayoutParams} from './ViewGroupImpl';
 
 // end - imports
@@ -56,6 +59,12 @@ export abstract class CustomSwipeRefreshLayoutImpl<T> extends ViewGroupImpl<T>{
 	@decorate(Expose({ name: "keep_refresh_head" }))
 	keep_refresh_head!:CommandAttr<boolean>| undefined;
 	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "time_out_return_to_top" }))
+	time_out_return_to_top!:CommandAttr<number>| undefined;
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "time_out_refresh_complete" }))
+	time_out_refresh_complete!:CommandAttr<number>| undefined;
+	@decorate(Type(() => CommandAttr))
 	@decorate(Expose({ name: "return_to_top_duration" }))
 	return_to_top_duration!:CommandAttr<number>| undefined;
 	@decorate(Type(() => CommandAttr))
@@ -73,6 +82,9 @@ export abstract class CustomSwipeRefreshLayoutImpl<T> extends ViewGroupImpl<T>{
 	@decorate(Type(() => CommandAttr))
 	@decorate(Expose({ name: "top_progress_bar_color_scheme" }))
 	top_progress_bar_color_scheme!:CommandAttr<string>| undefined;
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "webHeaderZIndex" }))
+	webHeaderZIndex!:CommandAttr<number>| undefined;
 
 	@decorate(Exclude())
 	protected thisPointer: T;	
@@ -85,12 +97,15 @@ export abstract class CustomSwipeRefreshLayoutImpl<T> extends ViewGroupImpl<T>{
 		this.enableHorizontalScroll = undefined;
 		this.enable_top_progress_bar_ = undefined;
 		this.keep_refresh_head = undefined;
+		this.time_out_return_to_top = undefined;
+		this.time_out_refresh_complete = undefined;
 		this.return_to_top_duration = undefined;
 		this.return_to_header_duration = undefined;
 		this.resistanceFactor = undefined;
 		this.progressBarHeight = undefined;
 		this.triggerDistance = undefined;
 		this.top_progress_bar_color_scheme = undefined;
+		this.webHeaderZIndex = undefined;
 		return this.thisPointer;
 	}
 	constructor(id: string, path: string[], event:  string) {
@@ -183,6 +198,34 @@ export abstract class CustomSwipeRefreshLayoutImpl<T> extends ViewGroupImpl<T>{
 	}
 		
 
+	public setTime_out_return_to_top(value : number) : T {
+		this.resetIfRequired();
+		if (this.time_out_return_to_top == null || this.time_out_return_to_top == undefined) {
+			this.time_out_return_to_top = new CommandAttr<number>();
+		}
+		
+		this.time_out_return_to_top.setSetter(true);
+		this.time_out_return_to_top.setValue(value);
+		this.orderSet++;
+		this.time_out_return_to_top.setOrderSet(this.orderSet);
+		return this.thisPointer;
+	}
+		
+
+	public setTime_out_refresh_complete(value : number) : T {
+		this.resetIfRequired();
+		if (this.time_out_refresh_complete == null || this.time_out_refresh_complete == undefined) {
+			this.time_out_refresh_complete = new CommandAttr<number>();
+		}
+		
+		this.time_out_refresh_complete.setSetter(true);
+		this.time_out_refresh_complete.setValue(value);
+		this.orderSet++;
+		this.time_out_refresh_complete.setOrderSet(this.orderSet);
+		return this.thisPointer;
+	}
+		
+
 	public setReturn_to_top_duration(value : number) : T {
 		this.resetIfRequired();
 		if (this.return_to_top_duration == null || this.return_to_top_duration == undefined) {
@@ -263,6 +306,20 @@ export abstract class CustomSwipeRefreshLayoutImpl<T> extends ViewGroupImpl<T>{
 		this.top_progress_bar_color_scheme.setValue(value);
 		this.orderSet++;
 		this.top_progress_bar_color_scheme.setOrderSet(this.orderSet);
+		return this.thisPointer;
+	}
+		
+
+	public setWebHeaderZIndex(value : number) : T {
+		this.resetIfRequired();
+		if (this.webHeaderZIndex == null || this.webHeaderZIndex == undefined) {
+			this.webHeaderZIndex = new CommandAttr<number>();
+		}
+		
+		this.webHeaderZIndex.setSetter(true);
+		this.webHeaderZIndex.setValue(value);
+		this.orderSet++;
+		this.webHeaderZIndex.setOrderSet(this.orderSet);
 		return this.thisPointer;
 	}
 		

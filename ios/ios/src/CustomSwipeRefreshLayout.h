@@ -123,6 +123,8 @@ withASCustomSwipeRefreshLayout_LayoutParams:(ASCustomSwipeRefreshLayout_LayoutPa
 
 - (void)setTriggerDistanceWithInt:(int32_t)distance;
 
+- (void)setWebHeaderZIndexWithId:(id)objValue;
+
 #pragma mark Protected
 
 - (bool)checkLayoutParamsWithADViewGroup_LayoutParams:(ADViewGroup_LayoutParams *)p;
