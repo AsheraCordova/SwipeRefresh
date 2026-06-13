@@ -784,13 +784,13 @@ public java.util.Map<String, Object> getOnRefreshEventObj( ) {
     	
     	ViewImpl.addPanListener(this, asNativeWidget(), uiView, new ViewImpl.PanCallBack() {
     		@Override
-    		public void handlePanStart(IWidget widget, Object eventWidget, int x, int y) {
+    		public void handlePanStart(IWidget widget, Object eventWidget, int x, int y, int rawX, int rawY) {
     			action = 1;
     			processTouchEvent(MotionEvent.ACTION_DOWN, x, y);
     		}
 
     		@Override
-    		public void handlePanDrag(IWidget widget, Object eventWidget, int x, int y) {
+    		public void handlePanDrag(IWidget widget, Object eventWidget, int x, int y, int rawX, int rawY) {
     			if (action == 1) {
     				if (processTouchEvent(MotionEvent.ACTION_MOVE, x, y)) {
     					fragment.getEventBus().notifyObservers("scrollEnabled", Boolean.FALSE);
@@ -799,7 +799,7 @@ public java.util.Map<String, Object> getOnRefreshEventObj( ) {
     		}
 
     		@Override
-    		public void handlePanEnd(IWidget widget, Object eventWidget, int x, int y) {
+    		public void handlePanEnd(IWidget widget, Object eventWidget, int x, int y, int rawX, int rawY) {
     			if (action == 1) {
     				processTouchEvent(MotionEvent.ACTION_UP, x, y);
     				action = 0;

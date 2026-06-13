@@ -190,17 +190,23 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCustomSwipeRefreshLayoutImpl_OnRefreshListener)
 - (void)handlePanStartWithASIWidget:(id<ASIWidget>)widget
                              withId:(id)eventWidget
                             withInt:(int32_t)x
-                            withInt:(int32_t)y;
+                            withInt:(int32_t)y
+                            withInt:(int32_t)rawX
+                            withInt:(int32_t)rawY;
 
 - (void)handlePanDragWithASIWidget:(id<ASIWidget>)widget
                             withId:(id)eventWidget
                            withInt:(int32_t)x
-                           withInt:(int32_t)y;
+                           withInt:(int32_t)y
+                           withInt:(int32_t)rawX
+                           withInt:(int32_t)rawY;
 
 - (void)handlePanEndWithASIWidget:(id<ASIWidget>)widget
                            withId:(id)eventWidget
                           withInt:(int32_t)x
-                          withInt:(int32_t)y;
+                          withInt:(int32_t)y
+                          withInt:(int32_t)rawX
+                          withInt:(int32_t)rawY;
 
 @end
 
@@ -1264,7 +1270,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCustomSwipeRefreshLayoutImpl_OnRefreshListene
 - (void)handlePanStartWithASIWidget:(id<ASIWidget>)widget
                              withId:(id)eventWidget
                             withInt:(int32_t)x
-                            withInt:(int32_t)y {
+                            withInt:(int32_t)y
+                            withInt:(int32_t)rawX
+                            withInt:(int32_t)rawY {
   this$0_->action_ = 1;
   ASCustomSwipeRefreshLayoutImpl_processTouchEventWithInt_withInt_withInt_(this$0_, ADMotionEvent_ACTION_DOWN, x, y);
 }
@@ -1272,7 +1280,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCustomSwipeRefreshLayoutImpl_OnRefreshListene
 - (void)handlePanDragWithASIWidget:(id<ASIWidget>)widget
                             withId:(id)eventWidget
                            withInt:(int32_t)x
-                           withInt:(int32_t)y {
+                           withInt:(int32_t)y
+                           withInt:(int32_t)rawX
+                           withInt:(int32_t)rawY {
   if (this$0_->action_ == 1) {
     if (ASCustomSwipeRefreshLayoutImpl_processTouchEventWithInt_withInt_withInt_(this$0_, ADMotionEvent_ACTION_MOVE, x, y)) {
       [((ASEventBus *) nil_chk([((id<ASIFragment>) nil_chk(this$0_->fragment_)) getEventBus])) notifyObserversWithNSString:@"scrollEnabled" withId:JreLoadStatic(JavaLangBoolean, FALSE)];
@@ -1283,7 +1293,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCustomSwipeRefreshLayoutImpl_OnRefreshListene
 - (void)handlePanEndWithASIWidget:(id<ASIWidget>)widget
                            withId:(id)eventWidget
                           withInt:(int32_t)x
-                          withInt:(int32_t)y {
+                          withInt:(int32_t)y
+                          withInt:(int32_t)rawX
+                          withInt:(int32_t)rawY {
   if (this$0_->action_ == 1) {
     ASCustomSwipeRefreshLayoutImpl_processTouchEventWithInt_withInt_withInt_(this$0_, ADMotionEvent_ACTION_UP, x, y);
     this$0_->action_ = 0;
@@ -1302,14 +1314,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCustomSwipeRefreshLayoutImpl_OnRefreshListene
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithASCustomSwipeRefreshLayoutImpl:);
-  methods[1].selector = @selector(handlePanStartWithASIWidget:withId:withInt:withInt:);
-  methods[2].selector = @selector(handlePanDragWithASIWidget:withId:withInt:withInt:);
-  methods[3].selector = @selector(handlePanEndWithASIWidget:withId:withInt:withInt:);
+  methods[1].selector = @selector(handlePanStartWithASIWidget:withId:withInt:withInt:withInt:withInt:);
+  methods[2].selector = @selector(handlePanDragWithASIWidget:withId:withInt:withInt:withInt:withInt:);
+  methods[3].selector = @selector(handlePanEndWithASIWidget:withId:withInt:withInt:withInt:withInt:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LASCustomSwipeRefreshLayoutImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LASCustomSwipeRefreshLayoutImpl;", "handlePanStart", "LASIWidget;LNSObject;II", "handlePanDrag", "handlePanEnd", "initialized" };
+  static const void *ptrTable[] = { "LASCustomSwipeRefreshLayoutImpl;", "handlePanStart", "LASIWidget;LNSObject;IIII", "handlePanDrag", "handlePanEnd", "initialized" };
   static const J2ObjcClassInfo _ASCustomSwipeRefreshLayoutImpl_1 = { "", "com.ashera.swiperefreshlayout", ptrTable, methods, fields, 7, 0x8000, 4, 1, 0, -1, 5, -1, -1 };
   return &_ASCustomSwipeRefreshLayoutImpl_1;
 }
